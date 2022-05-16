@@ -3,7 +3,9 @@
 #include <string>
 #include <vector>
 //
-#include <espresso_based.h>
+#include "espresso_based.h"
+#include "ingredient.h"
+#include "sub_ingredients.h"
 class Cappuccino : public EspressoBased {
 public:
     Cappuccino();
@@ -11,7 +13,7 @@ public:
     ~Cappuccino();
     void operator=(const Cappuccino& cap);
 
-    virtual std::string get_name() { return name; };
+    virtual std::string get_name() { return this->name; };
     virtual double price();
 
     void add_side_item(Ingredient* side);

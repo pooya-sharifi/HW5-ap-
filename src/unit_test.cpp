@@ -27,22 +27,23 @@ TEST(HW5Test, TEST2)
     Water water { 2 };
 }
 
-// TEST(HW5Test, TEST3) {
-//     Cinnamon    cinnamon{1};
-//     Sugar       sugar{2};
-//     Cookie      cookie{1};
-//     Water       water{2};
+TEST(HW5Test, TEST3)
+{
+    Cinnamon cinnamon { 1 };
+    Sugar sugar { 2 };
+    Cookie cookie { 1 };
+    Water water { 2 };
 
-//     Ingredient* ingredient;
-//     ingredient = &cinnamon;
-//     EXPECT_EQ(ingredient->get_name(), "Cinnamon");
-//     ingredient = &sugar;
-//     EXPECT_EQ(ingredient->get_name(), "Sugar");
-//     ingredient = &cookie;
-//     EXPECT_EQ(ingredient->get_name(), "Cookie");
-//     ingredient = &water;
-//     EXPECT_EQ(ingredient->get_name(), "Water");
-// }
+    Ingredient* ingredient;
+    ingredient = &cinnamon;
+    EXPECT_EQ(ingredient->get_name(), "Cinnamon");
+    ingredient = &sugar;
+    EXPECT_EQ(ingredient->get_name(), "Sugar");
+    ingredient = &cookie;
+    EXPECT_EQ(ingredient->get_name(), "Cookie");
+    ingredient = &water;
+    EXPECT_EQ(ingredient->get_name(), "Water");
+}
 
 TEST(HW5Test, TEST4)
 {
@@ -60,18 +61,21 @@ TEST(HW5Test, TEST5)
     Cappuccino cappuccino {};
     EXPECT_DOUBLE_EQ(cappuccino.price(), 55);
     cappuccino.add_side_item(new Cinnamon { 1 });
+    std::cout << "here" << std ::endl;
+
     EXPECT_DOUBLE_EQ(cappuccino.price(), 60);
 }
-/*
-TEST(HW5Test, TEST6) {
-    EspressoBased* esp{new Cappuccino{}};
-    reinterpret_cast<Cappuccino*>(esp)->add_side_item(new Cookie{1});
-    std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
-    EXPECT_EQ(sides.size(), 1);
-    delete esp;
-    EXPECT_EQ(sides.size(), 0);
-}
 
+TEST(HW5Test, TEST6)
+{
+    EspressoBased* esp { new Cappuccino {} };
+    reinterpret_cast<Cappuccino*>(esp)->add_side_item(new Cookie { 1 });
+    // std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
+    // EXPECT_EQ(sides.size(), 1);
+    // delete esp;
+    // EXPECT_EQ(sides.size(), 0);
+}
+/*
 TEST(HW5Test, TEST7) {
     Cappuccino cappuccino;
     cappuccino.add_side_item(new Chocolate{2});

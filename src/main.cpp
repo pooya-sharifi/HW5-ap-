@@ -11,12 +11,19 @@
 
 int main(int argc, char** argv)
 {
-    if (false) // make false to run unit-tests
+    if (true) // make false to run unit-tests
     {
         // debug section
+
         Cappuccino cappuccino {};
-        std::cout << cappuccino.get_name() << std::endl;
-        auto ingredients = cappuccino.get_ingredients();
+        EXPECT_DOUBLE_EQ(cappuccino.price(), 55);
+        Cinnamon pooya { 1 };
+        auto pooya_save = new Cinnamon(pooya);
+        cappuccino.add_side_item(pooya_save);
+        std::cout << "here" << std ::endl;
+        EXPECT_DOUBLE_EQ(cappuccino.price(), 60);
+        pooya_save = nullptr;
+        delete pooya_save;
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);
