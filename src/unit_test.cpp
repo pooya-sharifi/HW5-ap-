@@ -18,9 +18,9 @@ TEST(HW5Test, TEST1)
 TEST(HW5Test, TEST2)
 {
     Cinnamon cinnamon { 1 };
-    // Chocolate   chocolate{1};
-    // Sugar       sugar{2};
-    // Cookie      cookie{1};
+    Chocolate chocolate { 1 };
+    Sugar sugar { 2 };
+    Cookie cookie { 1 };
     Espresso espresso { 2 };
     Milk milk { 2 };
     MilkFoam milkFoam { 1 };
@@ -62,7 +62,6 @@ TEST(HW5Test, TEST5)
     EXPECT_DOUBLE_EQ(cappuccino.price(), 55);
     cappuccino.add_side_item(new Cinnamon { 1 });
     std::cout << "here" << std ::endl;
-
     EXPECT_DOUBLE_EQ(cappuccino.price(), 60);
 }
 
@@ -70,20 +69,21 @@ TEST(HW5Test, TEST6)
 {
     EspressoBased* esp { new Cappuccino {} };
     reinterpret_cast<Cappuccino*>(esp)->add_side_item(new Cookie { 1 });
-    // std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
-    // EXPECT_EQ(sides.size(), 1);
-    // delete esp;
+    std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
+    EXPECT_EQ(sides.size(), 1);
+    delete esp;
     // EXPECT_EQ(sides.size(), 0);
 }
-/*
-TEST(HW5Test, TEST7) {
-    Cappuccino cappuccino;
-    cappuccino.add_side_item(new Chocolate{2});
-    Cappuccino copy{cappuccino};
-    EXPECT_EQ(copy.get_name(), "Cappuccino");
-    EXPECT_DOUBLE_EQ(copy.price(), 65);
-}
 
+// TEST(HW5Test, TEST7)
+// {
+//     Cappuccino cappuccino;
+//     cappuccino.add_side_item(new Chocolate { 2 });
+//     Cappuccino copy { cappuccino };
+//     EXPECT_EQ(copy.get_name(), "Cappuccino");
+//     EXPECT_DOUBLE_EQ(copy.price(), 65);
+// }
+/*
 TEST(HW5Test, TEST8) {
     Cappuccino cappuccino;
     cappuccino.add_side_item(new Water{1});

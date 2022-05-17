@@ -1,17 +1,12 @@
 #ifndef SUB_INGREDIENTS_H
 #define SUB_INGREDIENTS_H
-// class Cinnamon
-// in ro nabayad avaz konim?
-// public bayad bashe?
 
 #include "ingredient.h"
 #define DEFCLASS(name_class, price_class)                               \
     class name_class : public Ingredient {                              \
     public:                                                             \
         name_class(size_t units)                                        \
-            : Ingredient {                                              \
-                price_class, units                                      \
-            }                                                           \
+            : Ingredient { price_class, units }                         \
         {                                                               \
             this->name = #name_class;                                   \
             std::cout << "subingredient was constructed " << std::endl; \

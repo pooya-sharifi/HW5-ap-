@@ -4,8 +4,7 @@
 #include <vector>
 //
 #include "espresso_based.h"
-#include "ingredient.h"
-#include "sub_ingredients.h"
+
 class Cappuccino : public EspressoBased {
 public:
     Cappuccino();
@@ -17,7 +16,7 @@ public:
     virtual double price();
 
     void add_side_item(Ingredient* side);
-    std::vector<Ingredient*>& get_side_items();
+    std::vector<Ingredient*>& get_side_items() { return side_items; };
 
 private:
     std::vector<Ingredient*> side_items;
