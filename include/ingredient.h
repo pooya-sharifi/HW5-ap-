@@ -7,9 +7,9 @@ class Ingredient {
 public:
     double get_price_unit() { return price_unit; };
     size_t get_units() { return units; };
-    std::string get_name() { return name; };
+    virtual std::string get_name() = 0;
 
-    double price() { return price_unit * units; };
+    double price() { return (price_unit * units); };
 
 protected:
     Ingredient(double _price_unit, size_t _units)

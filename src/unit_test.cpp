@@ -72,7 +72,7 @@ TEST(HW5Test, TEST6)
     std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
     EXPECT_EQ(sides.size(), 1);
     delete esp;
-    // EXPECT_EQ(sides.size(), 0);
+    EXPECT_EQ(sides.size(), 0);
 }
 
 // TEST(HW5Test, TEST7)

@@ -15,11 +15,16 @@ int main(int argc, char** argv)
     {
         // debug section
 
-        Cappuccino cappuccino {};
-        EXPECT_DOUBLE_EQ(cappuccino.price(), 55);
-        cappuccino.add_side_item(new Cinnamon { 1 });
-        std::cout << "here" << std ::endl;
-        EXPECT_DOUBLE_EQ(cappuccino.price(), 60);
+                // std::cout << "here" << std ::endl;
+        // std::cout << cappuccino.get_side_items()[0] << std ::endl;
+        // std::cout << cappuccino.get_side_items().size() << std ::endl;
+        // std::cout << "till here" << std ::endl;
+
+        // Cinnamon cnm { 1 };
+        // auto pointer = new Cinnamon(cnm);
+        // Cappuccino cappuccino {};
+        // cappuccino.add_side_item(pointer);
+        // delete pointer;
 
     } else {
         ::testing::InitGoogleTest(&argc, argv);
