@@ -14,18 +14,23 @@ int main(int argc, char** argv)
     if (false) // make false to run unit-tests
     {
         // debug section
+        // Mocha mocha {};
+        // EXPECT_EQ(mocha.get_name(), "Mocha");
+        // auto ingredients = mocha.get_ingredients();
 
-                // std::cout << "here" << std ::endl;
-        // std::cout << cappuccino.get_side_items()[0] << std ::endl;
-        // std::cout << cappuccino.get_side_items().size() << std ::endl;
-        // std::cout << "till here" << std ::endl;
+        // EspressoBased* esp { new Mocha {} };
+        // reinterpret_cast<Cappuccino*>(esp)->add_side_item(new Cookie { 1 });
+        // for (const auto& i : esp->get_ingredients()) {
+        //     std::cout << "&&&&&&" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
+        // }
+        // for (const auto& i : reinterpret_cast<Mocha*>(esp)->get_side_items()) {
+        //     std::cout << "***" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
+        // }
 
-        // Cinnamon cnm { 1 };
-        // auto pointer = new Cinnamon(cnm);
-        // Cappuccino cappuccino {};
-        // cappuccino.add_side_item(pointer);
-        // delete pointer;
-
+        // std::vector<Ingredient*>& sides = reinterpret_cast<Cappuccino*>(esp)->get_side_items();
+        // EXPECT_EQ(sides.size(), 2);
+        // delete esp;
+        // EXPECT_EQ(sides.size(), 0);
     } else {
         ::testing::InitGoogleTest(&argc, argv);
         std::cout << "RUNNING TESTS ..." << std::endl;
