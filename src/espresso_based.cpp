@@ -1,7 +1,13 @@
 #include "espresso_based.h"
 #include "cappuccino.h"
+#include <queue>
 void EspressoBased::brew()
 {
+    std::queue<std::string> queue;
+    for (auto i : this->get_ingredients())
+        queue.push(i->get_name());
+    double i = queue.size();
+
     using namespace ftxui;
     using namespace std::chrono_literals;
     std::string reset_position;
@@ -12,15 +18,81 @@ void EspressoBased::brew()
             gauge(percentage) | flex,
             text(" " + data_downloaded),
         });
+        double x { 1 / i };
+        double x1 = x;
+        // std::cout << percentage << 0.33 << std::endl;
+        if (x < 1 && queue.empty() != 1) {
+            if (data_downloaded == std::to_string(int(x * 100)) + "/100") {
+
+                using namespace ftxui;
+                auto document = hbox({
+                                    vbox({ center(text(queue.front())) }) | flex,
+
+                                })
+                    | border;
+                auto screen = Screen::Create(Dimension::Full(), Dimension::Fit(document));
+                // auto screen = Screen(100, 1);
+                reset_position = screen.ResetPosition();
+                std::cout << reset_position;
+                Render(screen, document);
+                screen.Print();
+                std::cout << std::endl;
+                x = x + x1;
+                queue.pop();
+            }
+        }
+
+        // std::cout << std::endl;
+        // auto cell = [](const char* t) { return text(t) | border; };
+        // auto document_2 = //
+        //     gridbox({
+        //         {
+        //             cell("esspresso"),
+        //             cell("milk"),
+        //             cell("milk foam"),
+        //         },
+        //     });
+
+        // auto screen_2 = Screen::Create(Dimension::Fit(document_2));
+        // Render(screen_2, document_2);
+        // screen_2.Print();
+        // getchar();
+
         auto screen = Screen(100, 1);
+        reset_position = screen.ResetPosition();
+        std::cout << reset_position;
         Render(screen, document);
         std::cout << reset_position;
+
         screen.Print();
         reset_position = screen.ResetPosition();
 
         std::this_thread::sleep_for(0.01s);
     }
+
     std::cout << std::endl;
+
+    ///
+
+    //     {
+    //         cell("center-west"),
+    //         gridbox({
+    //             {
+    //                 cell("center-north-west"),
+    //                 cell("center-north-east"),
+    //             },
+    //             {
+    //                 cell("center-south-west"),
+    //                 cell("center-south-east"),
+    //             },
+    //         }),
+    //         cell("center-east"),
+    //     },
+    //     {
+    //         cell("south-west"),
+    //         cell("south"),
+    //         cell("south-east"),
+    //     },
 }
 EspressoBased::~EspressoBased()
 {
