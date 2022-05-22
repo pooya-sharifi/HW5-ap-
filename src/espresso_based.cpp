@@ -7,7 +7,8 @@ void EspressoBased::brew()
     for (auto i : this->get_ingredients())
         queue.push(i->get_name());
     double i = queue.size();
-
+    double x { 1 / i };
+    double x1 = x;
     using namespace ftxui;
     using namespace std::chrono_literals;
     std::string reset_position;
@@ -18,12 +19,11 @@ void EspressoBased::brew()
             gauge(percentage) | flex,
             text(" " + data_downloaded),
         });
-        double x { 1 / i };
-        double x1 = x;
+
         // std::cout << percentage << 0.33 << std::endl;
         if (x < 1 && queue.empty() != 1) {
             if (data_downloaded == std::to_string(int(x * 100)) + "/100") {
-
+                std::cout << std::endl;
                 using namespace ftxui;
                 auto document = hbox({
                                     vbox({ center(text(queue.front())) }) | flex,
@@ -63,13 +63,27 @@ void EspressoBased::brew()
         std::cout << reset_position;
         Render(screen, document);
         std::cout << reset_position;
-
         screen.Print();
         reset_position = screen.ResetPosition();
 
         std::this_thread::sleep_for(0.01s);
     }
+    std::cout << std::endl;
+    using namespace ftxui;
+    auto document = hbox({
+                        vbox({ center(text(queue.front())) }) | flex,
 
+                    })
+        | border;
+    auto screen = Screen::Create(Dimension::Full(), Dimension::Fit(document));
+    // auto screen = Screen(100, 1);
+    // reset_position = screen.ResetPosition();
+    // std::cout << reset_position;
+    Render(screen, document);
+    screen.Print();
+    std::cout << std::endl;
+    x = x + x1;
+    queue.pop();
     std::cout << std::endl;
 
     ///
