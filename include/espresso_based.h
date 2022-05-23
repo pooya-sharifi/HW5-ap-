@@ -19,7 +19,6 @@ public:
 
     void brew();
     std::vector<Ingredient*>& get_ingredients() { return ingredients; };
-
     virtual ~EspressoBased();
 
 protected:

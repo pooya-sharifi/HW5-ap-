@@ -8,11 +8,11 @@ void EspressoBased::brew()
         queue.push(i->get_name());
     double i = queue.size();
     double x { 1 / i };
-    double x1 = x;
+    double x1 { x };
     using namespace ftxui;
     using namespace std::chrono_literals;
     std::string reset_position;
-    for (float percentage = 0.0f; percentage <= 1.0f; percentage += 0.002f) {
+    for (double percentage { 0.0 }; percentage <= 1.002; percentage += 0.002) {
         std::string data_downloaded = std::to_string(int(percentage * 100)) + "/100";
         auto document = hbox({
             text("brewing:"),
@@ -42,22 +42,6 @@ void EspressoBased::brew()
             }
         }
 
-        // std::cout << std::endl;
-        // auto cell = [](const char* t) { return text(t) | border; };
-        // auto document_2 = //
-        //     gridbox({
-        //         {
-        //             cell("esspresso"),
-        //             cell("milk"),
-        //             cell("milk foam"),
-        //         },
-        //     });
-
-        // auto screen_2 = Screen::Create(Dimension::Fit(document_2));
-        // Render(screen_2, document_2);
-        // screen_2.Print();
-        // getchar();
-
         auto screen = Screen(100, 1);
         reset_position = screen.ResetPosition();
         std::cout << reset_position;
@@ -76,9 +60,9 @@ void EspressoBased::brew()
                     })
         | border;
     auto screen = Screen::Create(Dimension::Full(), Dimension::Fit(document));
-    // auto screen = Screen(100, 1);
-    // reset_position = screen.ResetPosition();
-    // std::cout << reset_position;
+    // auto screen = Screen(100, 5);
+    reset_position = screen.ResetPosition();
+    std::cout << reset_position;
     Render(screen, document);
     screen.Print();
     std::cout << std::endl;
@@ -87,26 +71,6 @@ void EspressoBased::brew()
     std::cout << std::endl;
 
     ///
-
-    //     {
-    //         cell("center-west"),
-    //         gridbox({
-    //             {
-    //                 cell("center-north-west"),
-    //                 cell("center-north-east"),
-    //             },
-    //             {
-    //                 cell("center-south-west"),
-    //                 cell("center-south-east"),
-    //             },
-    //         }),
-    //         cell("center-east"),
-    //     },
-    //     {
-    //         cell("south-west"),
-    //         cell("south"),
-    //         cell("south-east"),
-    //     },
 }
 EspressoBased::~EspressoBased()
 {
@@ -146,15 +110,10 @@ EspressoBased::EspressoBased(const EspressoBased& esp)
             ingredients.push_back(new Water(i->get_units()));
         }
     }
-    for (const auto& i : temp_ing) {
-        std::cout << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-    }
-    std::cout << "esspresso based copy constructor was used and ingredients was copied" << std::endl;
+    // std::cout << "esspresso based copy constructor was used and ingredients was copied" << std::endl;
 }
 void EspressoBased::operator=(const EspressoBased& esp)
 {
-    // if (this == &esp)
-    //     return *this;
     if (this != &esp) {
         this->name = esp.name;
 
@@ -189,9 +148,6 @@ void EspressoBased::operator=(const EspressoBased& esp)
                 ingredients.push_back(new Water(i->get_units()));
             }
         }
-        for (const auto& i : ingredients) {
-            std::cout << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-        }
-        std::cout << "esspresso based operator = was used and ingredients was copied" << std::endl;
+        // std::cout << "esspresso based operator = was used and ingredients was copied" << std::endl;
     }
 }

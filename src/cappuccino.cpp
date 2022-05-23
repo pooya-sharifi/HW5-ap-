@@ -4,7 +4,7 @@ Cappuccino::Cappuccino()
 {
     // EspressoBased();
     this->name = "Cappuccino";
-    std::cout << "cappuccino constructed" << std::endl;
+    // std::cout << "cappuccino constructed" << std::endl;
     this->ingredients.push_back(new Milk { 2 });
     this->ingredients.push_back(new Espresso { 2 });
     this->ingredients.push_back(new MilkFoam { 1 });
@@ -12,10 +12,6 @@ Cappuccino::Cappuccino()
 Cappuccino::Cappuccino(const Cappuccino& cap)
     : EspressoBased { cap }
 {
-    // delete this;
-    // EspressoBased  EspressoBased { cap };
-    // this.
-    // dynamic_cast<EspressoBased> this { const_cast<Cappuccino&>(cap) };
     auto temp_side { const_cast<Cappuccino&>(cap).get_side_items() };
     for (const auto& i : temp_side) {
         if (i->get_name() == "Cinnamon") {
@@ -43,14 +39,8 @@ Cappuccino::Cappuccino(const Cappuccino& cap)
             side_items.push_back(new Water(i->get_units()));
         }
     }
-    for (const auto& i : temp_side) {
-        std::cout << "&&&&&&" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-    }
-    for (const auto& i : ingredients) {
-        std::cout << "***" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-    }
 
-    std::cout << "cappuccino was copied and side items was copied" << std::endl;
+    // std::cout << "cappuccino was copied and side items was copied" << std::endl;
 }
 void Cappuccino::operator=(const Cappuccino& cap)
 {
@@ -87,14 +77,7 @@ void Cappuccino::operator=(const Cappuccino& cap)
                 side_items.push_back(new Water(i->get_units()));
             }
         }
-        for (const auto& i : side_items) {
-            std::cout << "&&&&&&" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-        }
-        for (const auto& i : ingredients) {
-            std::cout << "***" << i->get_name() << i->get_price_unit() << i->get_units() << std::endl;
-        }
-
-        std::cout << " capp operator = and side items was copied" << std::endl;
+        // std::cout << " capp operator = and side items was copied" << std::endl;
     }
 }
 

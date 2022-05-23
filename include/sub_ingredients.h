@@ -2,16 +2,15 @@
 #define SUB_INGREDIENTS_H
 
 #include "ingredient.h"
-#define DEFCLASS(name_class, price_class)                               \
-    class name_class : public Ingredient {                              \
-    public:                                                             \
-        name_class(size_t units)                                        \
-            : Ingredient { price_class, units }                         \
-        {                                                               \
-            this->name = #name_class;                                   \
-            std::cout << "subingredient was constructed " << std::endl; \
-        }                                                               \
-        virtual std::string get_name() { return this->name; };          \
+#define DEFCLASS(name_class, price_class)                      \
+    class name_class : public Ingredient {                     \
+    public:                                                    \
+        name_class(size_t units)                               \
+            : Ingredient { price_class, units }                \
+        {                                                      \
+            this->name = #name_class;                          \
+        }                                                      \
+        virtual std::string get_name() { return this->name; }; \
     };
 
 DEFCLASS(Cinnamon, 5);

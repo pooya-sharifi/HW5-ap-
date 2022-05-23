@@ -14,10 +14,9 @@ public:
 protected:
     Ingredient(double _price_unit, size_t _units)
         : price_unit { _price_unit }
-        , units { _units }
-    {
-        std::cout << "ingredient was constructed \t price:" << price_unit << std::endl;
-    };
+        , units { _units } {
+            // std::cout << "ingredient was constructed \t price:" << price_unit << std::endl;
+        };
 
     double price_unit;
     size_t units;

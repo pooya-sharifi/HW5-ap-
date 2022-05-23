@@ -61,7 +61,6 @@ TEST(HW5Test, TEST5)
     Cappuccino cappuccino {};
     EXPECT_DOUBLE_EQ(cappuccino.price(), 55);
     cappuccino.add_side_item(new Cinnamon { 1 });
-    std::cout << "here" << std ::endl;
     EXPECT_DOUBLE_EQ(cappuccino.price(), 60);
 }
 
